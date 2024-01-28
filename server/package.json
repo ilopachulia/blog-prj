@@ -1,0 +1,23 @@
+{
+  "name": "blog-prj",
+  "version": "1.0.0",
+  "description": "building blogging website",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilopachulia/blog-prj.git"
+  },
+  "author": "Ilia Pachulia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilopachulia/blog-prj/issues"
+  },
+  "homepage": "https://github.com/ilopachulia/blog-prj#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
