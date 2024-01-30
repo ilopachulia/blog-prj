@@ -1,0 +1,84 @@
+const Blog = require('./../models/blogModel');
+
+exports.getAllBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find();
+    res.status(200).json({
+      status: 'success',
+      requestedAt: req.requestTime,
+      result: blogs.length,
+      data: {
+        blogs,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err.message,
+    });
+  }
+};
+
+exports.getBlog = async (req, res) => {
+  const id = req.params.id;
+  const blog = await Blog.findById(id);
+  res.status(200).json({
+    status: 'success',
+    data: {
+      blog,
+    },
+  });
+};
+
+exports.createBlog = async (req, res) => {
+  try {
+    const newBlog = await Blog.create(req.body);
+    console.log(newBlog);
+    res.status(201).json({
+      status: 'success',
+      data: {
+        post: newBlog,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err.message,
+    });
+  }
+};
+
+exports.updateBlog = async (req, res) => {
+  try {
+    const blog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(200).json({
+      status: 'success',
+      data: {
+        blog,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
+
+exports.deleteBlog = async (req, res) => {
+  try {
+    await Blog.findByIdAndDelete(req.params.id);
+    res.status(204).json({
+      status: 'success',
+      data: null,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
