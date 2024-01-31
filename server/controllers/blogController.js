@@ -1,8 +1,17 @@
 const Blog = require('./../models/blogModel');
+const APIFeatures = require('./../utils/apiFeatures');
 
 exports.getAllBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find();
+    console.log(req);
+
+    const features = new APIFeatures(Blog.find(), req.query)
+      .filter()
+      .limitFields()
+      .paginate();
+
+    const blogs = await features.query;
+
     res.status(200).json({
       status: 'success',
       requestedAt: req.requestTime,
@@ -33,7 +42,6 @@ exports.getBlog = async (req, res) => {
 exports.createBlog = async (req, res) => {
   try {
     const newBlog = await Blog.create(req.body);
-    console.log(newBlog);
     res.status(201).json({
       status: 'success',
       data: {
@@ -82,3 +90,46 @@ exports.deleteBlog = async (req, res) => {
     });
   }
 };
+
+exports.getBlogStats = async (req, res) => {
+  try {
+    const stats = await Blog.aggregate([
+      { $match: { claps: { $gte: 6 } } },
+      {
+        $group: {
+          _id: null,
+          clap: { $avg: '$clap' },
+        },
+      },
+    ]);
+    res.status(200).json({
+      status: 'success',
+      data: stats,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
+
+// should be implemented in users model
+// exports.getMonthlyPlan = async(req,res)=> {
+//   try {
+//     const year = req.params.year * 1;
+//     const plan = await Blog.aggregate([
+//
+//     ]);
+//     res.status(200).json({
+//       status: 'success',
+//       data: plan,
+//     });
+//
+//   } catch (err) {
+//     res.status(404).json({
+//       status: 'failed',
+//       message: err.message,
+//     });
+//   }
+// }

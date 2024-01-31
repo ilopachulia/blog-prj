@@ -3,6 +3,11 @@ const blogController = require('./../controllers/blogController');
 
 const router = express.Router();
 
+
+router.route('/blog-stats').get(blogController.getBlogStats)
+// router.route('/monthly-plan').get(blogController.getMonthlyPlan)
+
+
 router
   .route('/')
   .get(blogController.getAllBlogs)

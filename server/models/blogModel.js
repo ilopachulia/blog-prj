@@ -4,7 +4,6 @@ const blogSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    unique: true,
   },
   post: {
     type: String,
@@ -20,7 +19,8 @@ const blogSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
+    select: false,
   },
   keywords: {
     type: [String],
@@ -30,6 +30,7 @@ const blogSchema = new mongoose.Schema({
   },
   images: [String],
 });
+
 
 const Blog = mongoose.model('Blog', blogSchema);
 
