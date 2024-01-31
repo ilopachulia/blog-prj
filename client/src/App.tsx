@@ -1,25 +1,18 @@
-import { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './ui/Layout.tsx';
+import Home from './pages/Home.tsx';
 
 function App() {
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/account');
-        console.log(response);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   return (
-    <>
-      <h1 className='text-3xl font-bold text-red-300 underline'>
-        Hello world!
-      </h1>{' '}
-    </>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route path='/blogs' element={<Home />} />
+        <Route path='/javascript' element={<Home />} />
+        <Route path='/react' element={<Home />} />
+        <Route path='/typescript' element={<Home />} />
+        <Route path='/career' element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
 
