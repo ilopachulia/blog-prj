@@ -3,8 +3,6 @@ const APIFeatures = require('./../utils/apiFeatures');
 
 exports.getAllBlogs = async (req, res) => {
   try {
-    console.log(req);
-
     const features = new APIFeatures(Blog.find(), req.query)
       .filter()
       .limitFields()
@@ -16,9 +14,7 @@ exports.getAllBlogs = async (req, res) => {
       status: 'success',
       requestedAt: req.requestTime,
       result: blogs.length,
-      data: {
-        blogs,
-      },
+      data: blogs,
     });
   } catch (err) {
     res.status(404).json({
@@ -33,9 +29,7 @@ exports.getBlog = async (req, res) => {
   const blog = await Blog.findById(id);
   res.status(200).json({
     status: 'success',
-    data: {
-      blog,
-    },
+    data: blog,
   });
 };
 
@@ -44,9 +38,7 @@ exports.createBlog = async (req, res) => {
     const newBlog = await Blog.create(req.body);
     res.status(201).json({
       status: 'success',
-      data: {
-        post: newBlog,
-      },
+      data: newBlog,
     });
   } catch (err) {
     res.status(400).json({
@@ -64,9 +56,7 @@ exports.updateBlog = async (req, res) => {
     });
     res.status(200).json({
       status: 'success',
-      data: {
-        blog,
-      },
+      data: blog,
     });
   } catch (err) {
     res.status(400).json({
@@ -90,6 +80,7 @@ exports.deleteBlog = async (req, res) => {
     });
   }
 };
+
 
 exports.getBlogStats = async (req, res) => {
   try {
