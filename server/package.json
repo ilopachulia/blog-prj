@@ -19,11 +19,14 @@
   },
   "homepage": "https://github.com/ilopachulia/blog-prj#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^5.13.22",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "validator": "^13.11.0"
   },
   "engines": {
     "node": ">=17.0.0"
