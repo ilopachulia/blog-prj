@@ -5,3 +5,16 @@ export interface ButtonProps {
   className?: string;
   children: React.ReactNode;
 }
+
+export interface createUser {
+  name: string,
+  email: string,
+  password: string,
+  passwordConfirm: string,
+  phoneNumber: string,
+}
+
+export interface logInUser {
+  email: string,
+  password: string,
+}

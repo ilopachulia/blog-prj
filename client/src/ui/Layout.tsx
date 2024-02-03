@@ -5,7 +5,7 @@ import Footer from '../features/footer/Footer.tsx';
 
 function Layout() {
   return (
-    <div className='w-screen'>
+    <div>
       <div>
         <Header />
         <Toaster position='top-center' />
@@ -13,7 +13,7 @@ function Layout() {
           <Outlet />
         </main>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
