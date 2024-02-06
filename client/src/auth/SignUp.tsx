@@ -1,24 +1,33 @@
-import { FormEvent, useState } from 'react';
+import {FormEvent, useContext, useState} from 'react';
 import { Button } from '@mui/material';
 import { TextField } from '@mui/material';
 import { createUser } from '../api/userApi';
+import {UserContext} from "../contexts/UserContext.tsx";
 
 function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const {user, setUser} = useContext(UserContext);
 
-  function submitHandler(evt: FormEvent<HTMLFormElement>) {
+ async function submitHandler(evt: FormEvent<HTMLFormElement>) {
     evt.preventDefault();
-    createUser({
+    const token = await createUser({
       name,
       email,
       password,
       passwordConfirm,
-      phoneNumber,
     });
+
+    setUser(token);
+
+    if(token){
+      setName("")
+      setEmail("")
+      setPassword("")
+      setPasswordConfirm("")
+    }
   }
   return (
     <div className='flex justify-center items-center h-screen'>
@@ -53,6 +62,7 @@ function SignUp() {
             id='password'
             label='Password'
             variant='filled'
+            type='password'
             color='secondary'
             className='w-80 rounded bg-gray-400 !text-[#fff]'
             value={password}
@@ -64,21 +74,11 @@ function SignUp() {
             id='confirmPassword'
             label='Confirm Password'
             variant='filled'
+            type='password'
             color='secondary'
             className='w-80 rounded bg-gray-400 !text-[#fff]'
             value={passwordConfirm}
             onChange={(evt) => setPasswordConfirm(evt.target.value)}
-          />
-        </span>
-        <span className='mb-5'>
-          <TextField
-            id='phoneNumber'
-            label='Phone Number'
-            variant='filled'
-            color='secondary'
-            className='w-80 rounded bg-gray-400 !text-[#fff]'
-            value={phoneNumber}
-            onChange={(evt) => setPhoneNumber(evt.target.value)}
           />
         </span>
 

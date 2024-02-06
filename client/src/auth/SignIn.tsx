@@ -1,18 +1,31 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState , useContext} from 'react';
 import { Button } from '@mui/material';
 import { TextField } from '@mui/material';
 import { logIn } from '../api/userApi';
+import {UserContext} from "../contexts/UserContext.tsx";
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { user, setUser } = useContext(UserContext);
+    console.log(user)
 
-  function submitHandler(evt: FormEvent<HTMLFormElement>) {
+  async function submitHandler(evt: FormEvent<HTMLFormElement>) {
     evt.preventDefault();
-    logIn({
+   const token: string = await logIn({
       email,
       password,
     });
+    setUser(token);
+    if(token){
+        setEmail("");
+        setPassword("")
+    }
+  }
+
+  function  logOut () {
+      setUser("")
+      localStorage.removeItem("userToken");
   }
   return (
     <div className='flex justify-center items-center h-screen'>
@@ -36,6 +49,7 @@ function SignIn() {
             id='password'
             label='Password'
             variant='filled'
+            type="password"
             color='secondary'
             className='w-80 rounded bg-gray-400 !text-[#fff]'
             value={password}

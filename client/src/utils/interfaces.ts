@@ -11,7 +11,6 @@ export interface createUser {
   email: string,
   password: string,
   passwordConfirm: string,
-  phoneNumber: string,
 }
 
 export interface logInUser {
