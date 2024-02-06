@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('./../models/userModel');
 
 const signToken = (id) => {
-  return jwt.sign({ id, }, process.env.JWT_SECRET, {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
@@ -19,7 +19,7 @@ exports.signup = async (req, res, next) => {
     const token = signToken(newUser._id);
 
     res.status(201).json({
-      status: success,
+      status: 'success',
       token,
       data: newUser,
     });
@@ -38,13 +38,14 @@ exports.login = async (req, res, next) => {
     if (!email || !password) {
       res.status(400).json({
         status: 'fail',
-        message: err.message,
+        message: "There is not correct email or password",
       });
     }
 
     const user = await User.findOne({ email: email }).select('+password');
+    console.log("user", user)
 
-    if (!user || !(await User.correctPassword(password, user.password))) {
+    if (!user || !(await user.correctPassword(password, user.password))) {
       res.status(401).json({
         status: 'fail',
         message: 'unauthorized user',
@@ -63,4 +64,6 @@ exports.login = async (req, res, next) => {
       message: err.message,
     });
   }
+
+  next();
 };

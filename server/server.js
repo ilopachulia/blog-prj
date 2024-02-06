@@ -5,7 +5,7 @@ const { BASE_PORT } = require('./utils/constants');
 
 dotenv.config({ path: './config.env' });
 const DB = process.env.DATABASE.replace(
-  '<password>',
+  '<PASSWORD>',
   process.env.DATABASE_PASSWORD
 );
 
@@ -15,8 +15,9 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: false,
     useUnifiedTopology: true,
+
   })
-  .then((con) => console.log(con.connections));
+  .then(() => console.log("DB is connected!"));
 
 const port = process.env.PORT || BASE_PORT;
 
