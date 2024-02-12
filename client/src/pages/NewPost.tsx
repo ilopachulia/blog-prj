@@ -1,15 +1,22 @@
 import {Button, TextField} from "@mui/material";
 import {useState, ChangeEvent} from "react";
+import {createNewPost} from "../api/blogApi.ts";
+import toast from "react-hot-toast";
 
 
 function NewPost() {
     const [title, setTitle] = useState('');
     const [post, setPost] = useState('');
 
-    function submitHandler(evt: { preventDefault: () => void; }) {
+    async function submitHandler(evt: { preventDefault: () => void; }) {
         evt.preventDefault();
-        console.log('New Post???????')
-
+        const newPost = await createNewPost({title, post});
+        console.log(newPost);
+        if (newPost) {
+            setTitle("");
+            setPost("");
+            toast.success("Post created successfully")
+        }
     }
 
     return <div className='flex justify-center items-center h-screen'>
@@ -27,7 +34,7 @@ function NewPost() {
              multiline
              rows={1}
              value={title}
-             onChange={(evt:ChangeEvent<HTMLInputElement>) => setTitle(evt.target.value)}
+             onChange={(evt: ChangeEvent<HTMLInputElement>) => setTitle(evt.target.value)}
          />
         </span>
             <span className='mb-5'>
@@ -41,7 +48,7 @@ function NewPost() {
               multiline
               rows={10}
               value={post}
-              onChange={(evt:ChangeEvent<HTMLInputElement>) => setPost(evt.target.value)}
+              onChange={(evt: ChangeEvent<HTMLInputElement>) => setPost(evt.target.value)}
           />
         </span>
 

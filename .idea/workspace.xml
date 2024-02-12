@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c7f0c95-d27d-402d-bf21-997fbb7893e2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/api/blogApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/blogApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/api/userApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/userApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/auth/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/auth/SignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/features/header/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/header/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/NewPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/NewPost.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +61,7 @@
       <updated>1707734724505</updated>
       <workItem from="1707734737288" duration="24000" />
       <workItem from="1707735589559" duration="919000" />
-      <workItem from="1707736542523" duration="7225000" />
+      <workItem from="1707736542523" duration="12262000" />
     </task>
     <servers />
   </component>
