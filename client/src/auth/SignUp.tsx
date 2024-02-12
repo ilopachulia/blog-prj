@@ -13,6 +13,7 @@ function SignUp() {
     const { setUser} = useContext(UserContext);
     const navigate = useNavigate();
 
+
     async function submitHandler(evt: FormEvent<HTMLFormElement>) {
         evt.preventDefault();
         try {

@@ -9,11 +9,12 @@ function NavBar() {
   const [isSearchFiledClicked, setIsSearchFieldClicked] = useState(false);
   return (
     <div>
-      <NavLink
-        to='/blogs'
-        className={({ isActive }) => `mr-4 ${isActive ? 'underline' : ''}`}
-      >
-        All
+        <NavLink
+            to='/blogs'
+            className={({isActive}) =>
+                `mr-4 ${isActive ? 'pb-1 border-b-2' : ''}`
+            }>
+            All
       </NavLink>
       <NavLink
         to='/javascript'

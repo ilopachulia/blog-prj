@@ -7,15 +7,12 @@ function Home() {
   const {pathname} = useLocation()
 
   const {
-    isLoading,
-    error,
     data: blogs,
   } = useQuery({
     queryKey: [],
     queryFn: () => getAllBlogs(pathname),
   });
-
-  console.log(blogs);
+console.log(blogs);
 
   return <div></div>;
 }

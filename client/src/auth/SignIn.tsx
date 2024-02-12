@@ -3,12 +3,13 @@ import { Button } from '@mui/material';
 import { TextField } from '@mui/material';
 import { logIn } from '../api/userApi';
 import {UserContext} from "../contexts/UserContext.tsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   async function submitHandler(evt: FormEvent<HTMLFormElement>) {
     evt.preventDefault();
@@ -20,6 +21,7 @@ function SignIn() {
     if(token){
         setEmail("");
         setPassword("")
+        navigate("/blogs")
     }
   }
 

@@ -48,9 +48,9 @@ function Header() {
         setUser("")
         localStorage.removeItem("userToken");
         setIsMenuOpen(false);
-        console.log('user', user, localStorage.getItem("userToken"));
+
         if(!localStorage.getItem("userToken")) {
-            toast.success("You have been logged out successfully")
+            toast.success("You have been logged out successfully");
         }
     }
 

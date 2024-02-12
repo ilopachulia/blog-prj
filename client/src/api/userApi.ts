@@ -8,7 +8,7 @@ export async function createUser(userData: createUserProps) {
     try {
         const res = await axios({
             method: 'post',
-            url: `${BASE_URL}users/signup`,
+            url: `${BASE_URL}/users/signup`,
             data: userData,
         });
         if(res.data.token) {
@@ -22,7 +22,7 @@ export async function logIn(userData: logInUser) {
     try {
         const res = await axios({
             method: 'post',
-            url: `${BASE_URL}users/login`,
+            url: `${BASE_URL}/users/login`,
             data: userData,
         });
         if(res.data.token) {
