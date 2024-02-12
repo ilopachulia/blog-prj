@@ -3,6 +3,9 @@ import Layout from './ui/Layout.tsx';
 import Home from './pages/Home.tsx';
 import SignUp from './auth/SignUp.tsx';
 import SignIn from './auth/SignIn.tsx';
+import Account from "./pages/Account.tsx";
+import NewPost from "./pages/NewPost.tsx";
+
 
 function App() {
   return (
@@ -15,6 +18,8 @@ function App() {
         <Route path='/career' element={<Home />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/sign-in' element={<SignIn />} />
+        <Route path='/account' element={<Account />}/>
+        <Route path='/new-post' element={<NewPost />}/>
       </Route>
     </Routes>
   );

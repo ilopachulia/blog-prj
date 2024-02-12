@@ -12,9 +12,11 @@ import Stack from '@mui/material/Stack';
 import {Link} from 'react-router-dom';
 import {UserContext} from "../../contexts/UserContext.tsx";
 import toast from "react-hot-toast";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowRightFromBracket, faArrowRightToBracket, faPenToSquare, faUser} from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
-    const { user, setUser } = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     const anchorRef = useRef<HTMLButtonElement>(null);
 
@@ -44,12 +46,12 @@ function Header() {
         prevOpen.current = isMenuOpen;
     }, [isMenuOpen]);
 
-    function  signOut () {
+    function signOut() {
         setUser("")
         localStorage.removeItem("userToken");
         setIsMenuOpen(false);
 
-        if(!localStorage.getItem("userToken")) {
+        if (!localStorage.getItem("userToken")) {
             toast.success("You have been logged out successfully");
         }
     }
@@ -72,7 +74,7 @@ function Header() {
                         aria-haspopup="true"
                         onClick={handleToggle}
                     >
-                        <img src={menu} alt="menu button" />
+                        <img src={menu} alt="menu button"/>
                     </Button>
                     <Popper
                         open={isMenuOpen}
@@ -82,7 +84,7 @@ function Header() {
                         transition
                         disablePortal
                     >
-                        {({ TransitionProps, placement }) => (
+                        {({TransitionProps, placement}) => (
                             <Grow
                                 {...TransitionProps}
                                 style={{
@@ -97,9 +99,27 @@ function Header() {
                                             id="composition-menu"
                                             aria-labelledby="composition-button"
                                         >
-                                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                            <MenuItem onClick={handleClose}>My account</MenuItem>
-                                            {user ? <MenuItem onClick={signOut}>Logout</MenuItem> : <Link to='/sign-in'><MenuItem onClick={handleClose}>Login</MenuItem></Link>}
+                                            <Link to="/new-post">
+                                             <MenuItem onClick={handleClose}>
+                                                <FontAwesomeIcon icon={faPenToSquare} className="mr-2"/>
+                                                New Post
+                                            </MenuItem>
+                                            </Link>
+                                            {user ? (
+                                                    <Link to="/account">
+                                                        <MenuItem onClick={handleClose}>
+                                                            <FontAwesomeIcon icon={faUser}  className="mr-2" />
+                                                            My account</MenuItem>
+                                                    </Link>
+                                                )
+                                                : null}
+                                            {user ? <MenuItem onClick={signOut}>
+                                                    <FontAwesomeIcon icon={faArrowRightFromBracket}  className="mr-2" />
+                                                    Logout</MenuItem> :
+                                                <Link to='/sign-in'><MenuItem
+                                                    onClick={handleClose}>
+                                                    <FontAwesomeIcon icon={faArrowRightToBracket}  className="mr-2" />
+                                                    Login</MenuItem></Link>}
                                         </MenuList>
                                     </ClickAwayListener>
                                 </Paper>
