@@ -3,12 +3,12 @@ import { Button } from '@mui/material';
 import { TextField } from '@mui/material';
 import { logIn } from '../api/userApi';
 import {UserContext} from "../contexts/UserContext.tsx";
+import {Link} from "react-router-dom";
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { user, setUser } = useContext(UserContext);
-    console.log(user)
+  const { setUser } = useContext(UserContext);
 
   async function submitHandler(evt: FormEvent<HTMLFormElement>) {
     evt.preventDefault();
@@ -23,10 +23,7 @@ function SignIn() {
     }
   }
 
-  function  logOut () {
-      setUser("")
-      localStorage.removeItem("userToken");
-  }
+
   return (
     <div className='flex justify-center items-center h-screen'>
       <form
@@ -60,6 +57,8 @@ function SignIn() {
         <Button type='submit' variant='contained' color='secondary'>
           <span className='font-semibold text-gray-300'>Sign In</span>
         </Button>
+          <br/>
+          <Link to="/sign-up" className="hover:underline">Not registered yet?</Link>
       </form>
     </div>
   );

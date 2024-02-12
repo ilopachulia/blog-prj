@@ -18,8 +18,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
     const token= localStorage.getItem("userToken");
 
    useEffect(()=>{
-       setUser(token)
-   }, []);
+       if(token) {
+           setUser(token)
+       }
+       }, [token]);
 
     return (
         <UserContext.Provider
