@@ -1,6 +1,5 @@
 import {useState, useRef, useEffect, SyntheticEvent, useContext} from "react";
 import NavBar from './NavBar.tsx';
-import menu from './../../assets/menu.png';
 import Button from '@mui/material/Button';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
@@ -13,7 +12,8 @@ import {Link} from 'react-router-dom';
 import {UserContext} from "../../contexts/UserContext.tsx";
 import toast from "react-hot-toast";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowRightFromBracket, faArrowRightToBracket, faPenToSquare, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faArrowRightFromBracket, faArrowRightToBracket, faBars, faPenToSquare, faUser} from "@fortawesome/free-solid-svg-icons";
+import ThemeToggle from "../theme-toggler/ThemeToggler.tsx";
 
 function Header() {
     const {user, setUser} = useContext(UserContext);
@@ -65,7 +65,8 @@ function Header() {
                 <NavBar/>
             </div>
             <Stack direction="row" spacing={2}>
-                <div>
+                <div className="flex justify-between items-center">
+                    <ThemeToggle />
                     <Button
                         ref={anchorRef}
                         id="composition-button"
@@ -74,7 +75,7 @@ function Header() {
                         aria-haspopup="true"
                         onClick={handleToggle}
                     >
-                        <img src={menu} alt="menu button"/>
+                        <FontAwesomeIcon icon={faBars} />
                     </Button>
                     <Popper
                         open={isMenuOpen}
