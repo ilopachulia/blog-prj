@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  type: "primary" | "secondary" | "submit";
+  type?: "primary" | "secondary" | "submit";
   children: React.ReactNode;
 }
 

@@ -4,6 +4,7 @@ import {createUser} from '../api/userApi';
 import {UserContext} from "../contexts/UserContext.tsx";
 import {Link, useNavigate} from "react-router-dom";
 import Button from "../ui/Button.tsx";
+import signUpIcon from "../assets/sign-up.svg";
 
 
 function SignUp() {
@@ -41,9 +42,9 @@ function SignUp() {
     }
 
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-start'>
             <form
-                className='flex flex-col justify-center items-center'
+                className='flex flex-col justify-center items-center mr-40'
                 onSubmit={submitHandler}
             >
         <span className='mb-5'>
@@ -51,8 +52,8 @@ function SignUp() {
               id='username'
               label='Username'
               variant='filled'
-              color='secondary'
-              className='w-80 rounded bg-gray-400 !text-[#fff]'
+              color='primary'
+              className='w-80 rounded bg-gray-100'
               value={name}
               onChange={(evt) => setName(evt.target.value)}
           />
@@ -62,8 +63,8 @@ function SignUp() {
               id='email'
               label='Email'
               variant='filled'
-              color='secondary'
-              className='w-80 rounded bg-gray-400 !text-[#fff]'
+              color='primary'
+              className='w-80 rounded bg-gray-100'
               value={email}
               onChange={(evt) => setEmail(evt.target.value)}
           />
@@ -74,8 +75,8 @@ function SignUp() {
               label='Password'
               variant='filled'
               type='password'
-              color='secondary'
-              className='w-80 rounded bg-gray-400 !text-[#fff]'
+              color='primary'
+              className='w-80 rounded bg-gray-100'
               value={password}
               onChange={(evt) => setPassword(evt.target.value)}
           />
@@ -86,8 +87,8 @@ function SignUp() {
               label='Confirm Password'
               variant='filled'
               type='password'
-              color='secondary'
-              className='w-80 rounded bg-gray-400 !text-[#fff]'
+              color='primary'
+              className='w-80 rounded bg-gray-100'
               value={passwordConfirm}
               onChange={(evt) => setPasswordConfirm(evt.target.value)}
           />
@@ -98,6 +99,9 @@ function SignUp() {
                 <br/>
                 <Link to="/sign-in" className="hover:underline">Already registered?</Link>
             </form>
+            <div>
+                <img src={signUpIcon} alt="sign-up svg image"/>
+            </div>
         </div>
     );
 }

@@ -4,6 +4,7 @@ import { logIn } from '../api/userApi';
 import {UserContext} from "../contexts/UserContext.tsx";
 import {Link, useNavigate} from "react-router-dom";
 import Button from "../ui/Button.tsx";
+import signInIcon from "../assets/sign-in.svg";
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -27,9 +28,9 @@ function SignIn() {
 
 
   return (
-    <div className='flex justify-center items-center h-screen'>
+    <div className='flex justify-center items-center'>
       <form
-        className='flex flex-col justify-center items-center'
+        className='flex flex-col justify-center items-center mr-40'
         onSubmit={submitHandler}
       >
         <span className='mb-5'>
@@ -37,8 +38,8 @@ function SignIn() {
             id='email'
             label='Email'
             variant='filled'
-            color='secondary'
-            className='w-80 rounded bg-gray-400 !text-[#fff]'
+            color='primary'
+            className='w-80 rounded bg-gray-100'
             value={email}
             onChange={(evt) => setEmail(evt.target.value)}
           />
@@ -49,8 +50,8 @@ function SignIn() {
             label='Password'
             variant='filled'
             type="password"
-            color='secondary'
-            className='w-80 rounded bg-gray-400 !text-[#fff]'
+            color='primary'
+            className='w-80 rounded bg-gray-100'
             value={password}
             onChange={(evt) => setPassword(evt.target.value)}
           />
@@ -62,6 +63,9 @@ function SignIn() {
           <br/>
           <Link to="/sign-up" className="hover:underline">Not registered yet?</Link>
       </form>
+        <div>
+           <img src={signInIcon} alt="sign in icon" />
+        </div>
     </div>
   );
 }
