@@ -15,7 +15,7 @@ function ThemeToggle() {
 
     return (
         <>
-           <DarkModeSwitch checked={darkSide} onChange={toggleDarkMode} />
+           <DarkModeSwitch checked={darkSide} onChange={toggleDarkMode} size={18} />
         </>
     );
 }

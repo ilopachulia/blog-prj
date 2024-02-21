@@ -99,6 +99,7 @@ function Header() {
                                             autoFocusItem={isMenuOpen}
                                             id="composition-menu"
                                             aria-labelledby="composition-button"
+                                            className="dark:bg-secondary dark:border-0 border border-gray-200"
                                         >
                                             <Link to="/new-post">
                                              <MenuItem onClick={handleClose}>

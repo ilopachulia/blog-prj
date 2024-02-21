@@ -6,7 +6,7 @@ import Header from '../features/header/Header.tsx';
 function Layout() {
 
   return (
-    <div className="dark:bg-red-600">
+    <div className="dark:bg-primary dark:text-white">
       <div>
         <Header />
         <Toaster position='top-center' />

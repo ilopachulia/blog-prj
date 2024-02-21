@@ -1,9 +1,9 @@
 import { FormEvent, useState , useContext} from 'react';
-import { Button } from '@mui/material';
-import { TextField } from '@mui/material';
+import { TextField} from '@mui/material';
 import { logIn } from '../api/userApi';
 import {UserContext} from "../contexts/UserContext.tsx";
 import {Link, useNavigate} from "react-router-dom";
+import Button from "../ui/Button.tsx";
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -56,8 +56,8 @@ function SignIn() {
           />
         </span>
 
-        <Button type='submit' variant='contained' color='secondary'>
-          <span className='font-semibold text-gray-300'>Sign In</span>
+        <Button type="submit">
+          Sign In
         </Button>
           <br/>
           <Link to="/sign-up" className="hover:underline">Not registered yet?</Link>

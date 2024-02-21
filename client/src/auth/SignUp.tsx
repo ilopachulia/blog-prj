@@ -1,9 +1,10 @@
 import {FormEvent, useContext, useState} from 'react';
-import {Button} from '@mui/material';
 import {TextField} from '@mui/material';
 import {createUser} from '../api/userApi';
 import {UserContext} from "../contexts/UserContext.tsx";
 import {Link, useNavigate} from "react-router-dom";
+import Button from "../ui/Button.tsx";
+
 
 function SignUp() {
     const [name, setName] = useState('');
@@ -91,8 +92,8 @@ function SignUp() {
               onChange={(evt) => setPasswordConfirm(evt.target.value)}
           />
         </span>
-                <Button type='submit' variant='contained' color='secondary'>
-                    <span className='font-semibold text-gray-300'>Sign Up</span>
+                <Button type='submit'>
+                    Sign Up
                 </Button>
                 <br/>
                 <Link to="/sign-in" className="hover:underline">Already registered?</Link>

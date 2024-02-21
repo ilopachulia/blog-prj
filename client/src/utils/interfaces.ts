@@ -1,8 +1,8 @@
 import React from 'react';
 
 export interface ButtonProps {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-  className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  type: "primary" | "secondary" | "submit";
   children: React.ReactNode;
 }
 
